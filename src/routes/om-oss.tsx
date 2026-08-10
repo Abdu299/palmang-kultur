@@ -69,7 +69,7 @@ function OmOss() {
             </Reveal>
           </div>
           <Reveal delay={120}>
-            <div className="arch img-zoom border border-border">
+            <div className="img-zoom border border-border">
               <img
                 src={oliveImg}
                 alt="Olivenlund på terrassert skråning i gyllent kveldslys"
