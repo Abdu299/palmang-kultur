@@ -137,13 +137,16 @@ export function OliveBranch({
       aria-hidden="true"
     >
       <path d="M4 40C28 34 62 26 116 8" stroke={color} strokeWidth="1.3" strokeLinecap="round" />
-      {[
-        [24, 30],
-        [42, 25],
-        [60, 20],
-        [78, 16],
-        [96, 11],
-      ].map(([x, y], i) => (
+      {(
+        [
+          [24, 30],
+          [42, 25],
+          [60, 20],
+          [78, 16],
+          [96, 11],
+        ] as Array<[number, number]>
+      ).map(([x, y], i) => (
+
         <g key={i}>
           <ellipse
             cx={x}
