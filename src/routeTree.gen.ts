@@ -10,11 +10,24 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ArrangementerRouteImport } from './routes/arrangementer'
+import { Route as KulturRouteImport } from './routes/kultur'
 import { Route as OmOssRouteImport } from './routes/om-oss'
+import { Route as SamarbeidRouteImport } from './routes/samarbeid'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArrangementerRoute = ArrangementerRouteImport.update({
+  id: '/arrangementer',
+  path: '/arrangementer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KulturRoute = KulturRouteImport.update({
+  id: '/kultur',
+  path: '/kultur',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OmOssRoute = OmOssRouteImport.update({
@@ -22,31 +35,48 @@ const OmOssRoute = OmOssRouteImport.update({
   path: '/om-oss',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SamarbeidRoute = SamarbeidRouteImport.update({
+  id: '/samarbeid',
+  path: '/samarbeid',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/arrangementer': typeof ArrangementerRoute
+  '/kultur': typeof KulturRoute
   '/om-oss': typeof OmOssRoute
+  '/samarbeid': typeof SamarbeidRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/arrangementer': typeof ArrangementerRoute
+  '/kultur': typeof KulturRoute
   '/om-oss': typeof OmOssRoute
+  '/samarbeid': typeof SamarbeidRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/arrangementer': typeof ArrangementerRoute
+  '/kultur': typeof KulturRoute
   '/om-oss': typeof OmOssRoute
+  '/samarbeid': typeof SamarbeidRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/om-oss'
+  fullPaths: '/' | '/arrangementer' | '/kultur' | '/om-oss' | '/samarbeid'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/om-oss'
-  id: '__root__' | '/' | '/om-oss'
+  to: '/' | '/arrangementer' | '/kultur' | '/om-oss' | '/samarbeid'
+  id: '__root__' | '/' | '/arrangementer' | '/kultur' | '/om-oss' | '/samarbeid'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ArrangementerRoute: typeof ArrangementerRoute
+  KulturRoute: typeof KulturRoute
   OmOssRoute: typeof OmOssRoute
+  SamarbeidRoute: typeof SamarbeidRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -58,6 +88,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/arrangementer': {
+      id: '/arrangementer'
+      path: '/arrangementer'
+      fullPath: '/arrangementer'
+      preLoaderRoute: typeof ArrangementerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kultur': {
+      id: '/kultur'
+      path: '/kultur'
+      fullPath: '/kultur'
+      preLoaderRoute: typeof KulturRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/om-oss': {
       id: '/om-oss'
       path: '/om-oss'
@@ -65,12 +109,22 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OmOssRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/samarbeid': {
+      id: '/samarbeid'
+      path: '/samarbeid'
+      fullPath: '/samarbeid'
+      preLoaderRoute: typeof SamarbeidRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ArrangementerRoute: ArrangementerRoute,
+  KulturRoute: KulturRoute,
   OmOssRoute: OmOssRoute,
+  SamarbeidRoute: SamarbeidRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
