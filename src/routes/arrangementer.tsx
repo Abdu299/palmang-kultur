@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Instagram, Facebook, CalendarDays } from "lucide-react";
+import { CalendarDays } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { PageHero, SectionHeading } from "@/components/Section";
 import { TatreezMotif } from "@/components/Tatreez";
@@ -121,9 +121,7 @@ function Arrangementer() {
                   og sted. Inntil da finner du de siste aktivitetene våre på sosiale medier.
                 </p>
                 <div className="flex flex-wrap gap-3">
-                  <InstagramLink className="btn btn-accent">
-                    <span className="sr-only">Åpne </span>Instagram
-                  </InstagramLink>
+                  <InstagramLink className="btn btn-accent">Instagram</InstagramLink>
                   <FacebookLink className="btn btn-outline">Facebook</FacebookLink>
                 </div>
               </div>
@@ -169,14 +167,8 @@ function Arrangementer() {
                 Følg oss for å få med deg våre neste aktiviteter.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
-                <InstagramLink className="btn btn-accent">
-                  <Instagram className="hidden" size={0} aria-hidden="true" />
-                  Følg oss på Instagram
-                </InstagramLink>
-                <FacebookLink className="btn btn-outline">
-                  <Facebook className="hidden" size={0} aria-hidden="true" />
-                  Følg oss på Facebook
-                </FacebookLink>
+                <InstagramLink className="btn btn-accent">Følg oss på Instagram</InstagramLink>
+                <FacebookLink className="btn btn-outline">Følg oss på Facebook</FacebookLink>
               </div>
             </div>
           </Reveal>
