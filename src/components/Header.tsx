@@ -36,22 +36,35 @@ export function Header() {
           : "border-b border-transparent bg-[color-mix(in_oklab,var(--ivory)_75%,transparent)] backdrop-blur-sm"
       }`}
     >
-      <div className="shell flex min-h-[88px] items-center justify-between gap-4">
-        {/* LOGO */}
+      <div className="shell flex min-h-[92px] items-center justify-between gap-4">
+
+        {/* LOGO + NAME */}
         <Link
           to="/"
           aria-label="Palmang Kulturforening – Hjem"
-          className="flex shrink-0 items-center"
+          className="flex shrink-0 items-center gap-3"
         >
           <img
             src="/palmang-logo.png"
-            alt="Palmang Kulturforening"
-            className="h-16 w-auto object-contain md:h-20"
+            alt="Palmang Kulturforening logo"
+            className="h-16 w-16 object-contain md:h-20 md:w-20"
           />
+
+          <div className="flex flex-col leading-none">
+            <span className="font-display text-xl font-bold tracking-[0.08em] text-charcoal md:text-2xl">
+              PALMANG
+            </span>
+
+            <span className="mt-1 text-[0.65rem] font-semibold tracking-[0.16em] text-olive md:text-xs">
+              KULTURFORENING
+            </span>
+          </div>
         </Link>
 
-        {/* DESKTOP NAVIGATION */}
+        {/* RIGHT SIDE */}
         <div className="flex items-center gap-2 lg:gap-6">
+
+          {/* DESKTOP NAV */}
           <nav aria-label="Hovedmeny" className="hidden lg:block">
             <ul className="flex items-center gap-6">
               {NAV.map((item) => (
@@ -70,12 +83,12 @@ export function Header() {
 
           <span className="mx-1 hidden h-6 w-px bg-border lg:block" />
 
-          {/* SOCIAL LINKS */}
+          {/* SOCIAL */}
           <div className="hidden md:block">
             <SocialIconLinks />
           </div>
 
-          {/* JOIN BUTTON */}
+          {/* JOIN */}
           <a
             href={SOCIAL.instagram.url}
             target="_blank"
