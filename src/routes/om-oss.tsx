@@ -167,16 +167,7 @@ function OmOss() {
                     <dd className="mt-1.5">{value}</dd>
                   </div>
                 ))}
-                <div className="sm:col-span-2">
-                  <dt className="text-[0.7rem] tracking-[0.2em] uppercase text-muted-foreground">
-                    Registrert adresse
-                  </dt>
-                  <dd className="mt-1.5">
-                    {SITE.address.street}
-                    <br />
-                    {SITE.address.postal}
-                  </dd>
-                </div>
+                
               </dl>
             </div>
           </Reveal>

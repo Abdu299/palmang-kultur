@@ -94,8 +94,7 @@ export function Footer() {
             </ul>
             <address className="mt-7 space-y-1 text-sm not-italic opacity-80">
               <p>Org.nr. {SITE.orgNumber}</p>
-              <p>{SITE.address.street}</p>
-              <p>{SITE.address.postal}</p>
+
             </address>
           </div>
         </div>
