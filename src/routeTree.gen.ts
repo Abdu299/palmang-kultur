@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ArrangementerRouteImport } from './routes/arrangementer'
+import { Route as KontaktRouteImport } from './routes/kontakt'
+import { Route as KulturRouteImport } from './routes/kultur'
+import { Route as OmOssRouteImport } from './routes/om-oss'
+import { Route as PersonvernRouteImport } from './routes/personvern'
+import { Route as SamarbeidRouteImport } from './routes/samarbeid'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ArrangementerRoute = ArrangementerRouteImport.update({
+  id: '/arrangementer',
+  path: '/arrangementer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontaktRoute = KontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KulturRoute = KulturRouteImport.update({
+  id: '/kultur',
+  path: '/kultur',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OmOssRoute = OmOssRouteImport.update({
+  id: '/om-oss',
+  path: '/om-oss',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PersonvernRoute = PersonvernRouteImport.update({
+  id: '/personvern',
+  path: '/personvern',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SamarbeidRoute = SamarbeidRouteImport.update({
+  id: '/samarbeid',
+  path: '/samarbeid',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/arrangementer': typeof ArrangementerRoute
+  '/kontakt': typeof KontaktRoute
+  '/kultur': typeof KulturRoute
+  '/om-oss': typeof OmOssRoute
+  '/personvern': typeof PersonvernRoute
+  '/samarbeid': typeof SamarbeidRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/arrangementer': typeof ArrangementerRoute
+  '/kontakt': typeof KontaktRoute
+  '/kultur': typeof KulturRoute
+  '/om-oss': typeof OmOssRoute
+  '/personvern': typeof PersonvernRoute
+  '/samarbeid': typeof SamarbeidRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/arrangementer': typeof ArrangementerRoute
+  '/kontakt': typeof KontaktRoute
+  '/kultur': typeof KulturRoute
+  '/om-oss': typeof OmOssRoute
+  '/personvern': typeof PersonvernRoute
+  '/samarbeid': typeof SamarbeidRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/arrangementer'
+    | '/kontakt'
+    | '/kultur'
+    | '/om-oss'
+    | '/personvern'
+    | '/samarbeid'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/arrangementer'
+    | '/kontakt'
+    | '/kultur'
+    | '/om-oss'
+    | '/personvern'
+    | '/samarbeid'
+  id:
+    | '__root__'
+    | '/'
+    | '/arrangementer'
+    | '/kontakt'
+    | '/kultur'
+    | '/om-oss'
+    | '/personvern'
+    | '/samarbeid'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ArrangementerRoute: typeof ArrangementerRoute
+  KontaktRoute: typeof KontaktRoute
+  KulturRoute: typeof KulturRoute
+  OmOssRoute: typeof OmOssRoute
+  PersonvernRoute: typeof PersonvernRoute
+  SamarbeidRoute: typeof SamarbeidRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +130,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/arrangementer': {
+      id: '/arrangementer'
+      path: '/arrangementer'
+      fullPath: '/arrangementer'
+      preLoaderRoute: typeof ArrangementerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kultur': {
+      id: '/kultur'
+      path: '/kultur'
+      fullPath: '/kultur'
+      preLoaderRoute: typeof KulturRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/om-oss': {
+      id: '/om-oss'
+      path: '/om-oss'
+      fullPath: '/om-oss'
+      preLoaderRoute: typeof OmOssRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/personvern': {
+      id: '/personvern'
+      path: '/personvern'
+      fullPath: '/personvern'
+      preLoaderRoute: typeof PersonvernRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/samarbeid': {
+      id: '/samarbeid'
+      path: '/samarbeid'
+      fullPath: '/samarbeid'
+      preLoaderRoute: typeof SamarbeidRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ArrangementerRoute: ArrangementerRoute,
+  KontaktRoute: KontaktRoute,
+  KulturRoute: KulturRoute,
+  OmOssRoute: OmOssRoute,
+  PersonvernRoute: PersonvernRoute,
+  SamarbeidRoute: SamarbeidRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
