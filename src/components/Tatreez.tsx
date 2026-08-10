@@ -86,37 +86,27 @@ export function TatreezBand({
         ? "color-mix(in oklab, white 45%, transparent)"
         : "var(--burgundy)";
 
+  const cell = (x: number, y: number) =>
+    `<rect x="${x}" y="${y}" width="4" height="4" />`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="24" viewBox="0 0 48 24"><g fill="COLOR">${cell(22, 2)}${cell(18, 6)}${cell(26, 6)}${cell(14, 10)}${cell(22, 10)}${cell(30, 10)}${cell(2, 10)}${cell(42, 10)}${cell(18, 14)}${cell(26, 14)}${cell(22, 18)}</g></svg>`;
+
   return (
-    <svg
-      className={className}
-      viewBox="0 0 48 24"
-      width="100%"
-      height="20"
-      preserveAspectRatio="xMidYMid"
+    <div
+      className={`h-6 w-full ${className}`}
       aria-hidden="true"
-      role="presentation"
-    >
-      <defs>
-        <pattern id="tatreez-band" width="48" height="24" patternUnits="userSpaceOnUse">
-          <g fill={color}>
-            <rect x="22" y="2" width="4" height="4" />
-            <rect x="18" y="6" width="4" height="4" />
-            <rect x="26" y="6" width="4" height="4" />
-            <rect x="14" y="10" width="4" height="4" />
-            <rect x="22" y="10" width="4" height="4" />
-            <rect x="30" y="10" width="4" height="4" />
-            <rect x="18" y="14" width="4" height="4" />
-            <rect x="26" y="14" width="4" height="4" />
-            <rect x="22" y="18" width="4" height="4" />
-            <rect x="2" y="10" width="4" height="4" />
-            <rect x="42" y="10" width="4" height="4" />
-          </g>
-        </pattern>
-      </defs>
-      <rect width="100%" height="24" fill="url(#tatreez-band)" />
-    </svg>
+      style={{
+        backgroundColor: color,
+        maskImage: `url("data:image/svg+xml;utf8,${encodeURIComponent(svg.replace("COLOR", "#000"))}")`,
+        WebkitMaskImage: `url("data:image/svg+xml;utf8,${encodeURIComponent(svg.replace("COLOR", "#000"))}")`,
+        maskRepeat: "repeat-x",
+        WebkitMaskRepeat: "repeat-x",
+        maskSize: "48px 24px",
+        WebkitMaskSize: "48px 24px",
+      }}
+    />
   );
 }
+
 
 /** Olivengren – enkel illustrasjon. */
 export function OliveBranch({
