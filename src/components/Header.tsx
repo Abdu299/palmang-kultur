@@ -3,12 +3,14 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { NAV, SOCIAL } from "@/lib/site";
 import { SocialIconLinks } from "@/components/SocialLinks";
-import { TatreezMotif } from "@/components/Tatreez";
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  const pathname = useRouterState({
+    select: (s) => s.location.pathname,
+  });
 
   useEffect(() => {
     setOpen(false);
@@ -16,8 +18,13 @@ export function Header() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
+
     onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
+
+    window.addEventListener("scroll", onScroll, {
+      passive: true,
+    });
+
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -29,19 +36,21 @@ export function Header() {
           : "border-b border-transparent bg-[color-mix(in_oklab,var(--ivory)_75%,transparent)] backdrop-blur-sm"
       }`}
     >
-      <div className="shell grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-3.5 md:py-4">
-        <Link to="/" className="flex min-w-0 items-center gap-3" aria-label="Palmang Kulturforening – hjem">
-          <TatreezMotif size={20} className="shrink-0" />
-          <span className="min-w-0 leading-none">
-            <span className="block font-display text-xl font-semibold tracking-[0.16em] text-charcoal">
-              PALMANG
-            </span>
-            <span className="mt-1 block text-[0.6rem] font-medium tracking-[0.3em] text-muted-foreground">
-              KULTURFORENING
-            </span>
-          </span>
+      <div className="shell flex min-h-[88px] items-center justify-between gap-4">
+        {/* LOGO */}
+        <Link
+          to="/"
+          aria-label="Palmang Kulturforening – Hjem"
+          className="flex shrink-0 items-center"
+        >
+          <img
+            src="/palmang-logo.png"
+            alt="Palmang Kulturforening"
+            className="h-16 w-auto object-contain md:h-20"
+          />
         </Link>
 
+        {/* DESKTOP NAVIGATION */}
         <div className="flex items-center gap-2 lg:gap-6">
           <nav aria-label="Hovedmeny" className="hidden lg:block">
             <ul className="flex items-center gap-6">
@@ -61,10 +70,12 @@ export function Header() {
 
           <span className="mx-1 hidden h-6 w-px bg-border lg:block" />
 
+          {/* SOCIAL LINKS */}
           <div className="hidden md:block">
             <SocialIconLinks />
           </div>
 
+          {/* JOIN BUTTON */}
           <a
             href={SOCIAL.instagram.url}
             target="_blank"
@@ -74,6 +85,7 @@ export function Header() {
             Bli med
           </a>
 
+          {/* MOBILE MENU BUTTON */}
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -82,11 +94,16 @@ export function Header() {
             aria-label={open ? "Lukk meny" : "Åpne meny"}
             className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-border text-charcoal transition-colors hover:border-olive lg:hidden"
           >
-            {open ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
+            {open ? (
+              <X size={20} aria-hidden="true" />
+            ) : (
+              <Menu size={20} aria-hidden="true" />
+            )}
           </button>
         </div>
       </div>
 
+      {/* MOBILE MENU */}
       <div
         id="mobilmeny"
         hidden={!open}
@@ -95,7 +112,10 @@ export function Header() {
         <nav aria-label="Mobilmeny" className="shell py-6">
           <ul className="flex flex-col">
             {NAV.map((item) => (
-              <li key={item.to} className="border-b border-border/70 last:border-0">
+              <li
+                key={item.to}
+                className="border-b border-border/70 last:border-0"
+              >
                 <Link
                   to={item.to}
                   activeOptions={{ exact: item.to === "/" }}
@@ -106,6 +126,7 @@ export function Header() {
               </li>
             ))}
           </ul>
+
           <div className="mt-7 flex flex-wrap items-center gap-4">
             <a
               href={SOCIAL.instagram.url}
@@ -115,6 +136,7 @@ export function Header() {
             >
               Bli med
             </a>
+
             <SocialIconLinks />
           </div>
         </nav>
