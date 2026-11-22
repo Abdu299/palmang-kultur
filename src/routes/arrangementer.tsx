@@ -106,6 +106,37 @@ function Arrangementer() {
         </div>
       </section>
 
+      {/* Kulturkveld 14. november 2026 */}
+      <section className="section-pad bg-sand/60">
+        <div className="shell grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <Reveal>
+            <figure className="overflow-hidden border border-border bg-background p-3 shadow-sm md:p-5">
+              <img
+                src="/images/kulturkveld-14-november-2026.webp"
+                alt="Plakat for kulturkvelden 14. november 2026 med Huda al-Mashhadani, poesi og musikk"
+                loading="lazy"
+                className="h-auto w-full object-contain"
+              />
+            </figure>
+          </Reveal>
+          <Reveal delay={100}>
+            <p className="eyebrow"><TatreezMotif size={14} /> Tidligere arrangement</p>
+            <h2 className="display-md mt-5">Kulturkveld med litteratur, poesi og musikk</h2>
+            <p className="lead mt-5">
+              14. november 2026 ble det arrangert en kulturkveld i Oslo i samarbeid med
+              Palmang Kulturforening og Nard for kultur og kunst.
+            </p>
+            <p className="mt-5 text-muted-foreground">
+              Kvelden hadde forfatterbesøk av Huda al-Mashhadani, diktlesning,
+              litterære innslag og musikalske bidrag.
+            </p>
+            <p className="mt-5 text-sm text-muted-foreground">
+              Lørdag 14. november 2026 kl. 17:00 · Mariboes gate 8, 0183 Oslo
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Tidligere aktiviteter */}
       <section className="section-pad">
         <div className="shell">
